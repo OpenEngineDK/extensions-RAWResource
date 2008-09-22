@@ -36,7 +36,8 @@ private:
     bool loaded;
     string filename;
     unsigned char* data;
-    int id, width, height, depth;
+    int id;
+    unsigned int width, height, depth;
 
 public:
 
@@ -67,9 +68,10 @@ public:
     // texture resource methods
 	int GetID();
 	void SetID(int id);   
-    int GetWidth();
-	int GetHeight();
-	int GetDepth();
+    unsigned int GetWidth();
+	unsigned int GetHeight();
+	unsigned int GetDepth();
+    ColorFormat GetColorFormat();
 	unsigned char* GetData();
 
 };

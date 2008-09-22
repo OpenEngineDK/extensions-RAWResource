@@ -70,16 +70,20 @@ void RAWResource::SetID(int id){
     this->id = id;
 }
 
-int RAWResource::GetWidth(){
+unsigned int RAWResource::GetWidth(){
     return width;
 }
 
-int RAWResource::GetHeight(){
+unsigned int RAWResource::GetHeight(){
     return height;
 }
 
-int RAWResource::GetDepth(){
+unsigned int RAWResource::GetDepth(){
     return depth;
+}
+
+ColorFormat RAWResource::GetColorFormat() {
+    return LUMINANCE;
 }
 
 unsigned char* RAWResource::GetData(){
