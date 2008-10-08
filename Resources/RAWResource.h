@@ -11,7 +11,6 @@
 #define _RAW_RESOURCE_H_
 
 #include <Resources/ITextureResource.h>
-#include <Resources/ResourcePlugin.h>
 #include <string>
 #include <iostream>
 #include <fstream>
