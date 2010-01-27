@@ -36,7 +36,7 @@ private:
     string filename;
     unsigned char* data;
     int id;
-    unsigned int width, height, depth;
+    unsigned int width, height;
 
 public:
 
@@ -54,7 +54,7 @@ public:
     }
 
     RAWResource() : loaded(false),data(NULL) {
-        width = height = depth = id = 0;
+        width = height = id = 0;
     };
 
     RAWResource(string file, int width, int height, int depth);
@@ -69,7 +69,6 @@ public:
 	void SetID(int id);   
     unsigned int GetWidth();
 	unsigned int GetHeight();
-	unsigned int GetDepth();
     ColorFormat GetColorFormat();
 	unsigned char* GetData();
 

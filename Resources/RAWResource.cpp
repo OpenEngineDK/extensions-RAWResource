@@ -19,8 +19,9 @@ using OpenEngine::Utils::Convert;
 
 RAWResource::RAWResource(string filename, int width, int height, int depth)
   : loaded(false), filename(filename), data(NULL),
-    width(width), height(height), depth(depth) {
+    width(width), height(height) {
     id = 0;
+    this->channels = depth / 8;
 }
 
 RAWResource::~RAWResource() {
@@ -33,9 +34,8 @@ void RAWResource::Load() {
 
     //@todo: check that the file size equals w*h*d
 
-    int numberOfCharsPerColor = (depth/8);
-    long size = width * height * numberOfCharsPerColor;
-    data = new unsigned char[size]; 
+    long size = width * height * this->channels;;
+    data = new unsigned char[size];
     
     file->read((char*)data, sizeof(unsigned char)*size); 
     if (file->fail()) {
@@ -76,10 +76,6 @@ unsigned int RAWResource::GetWidth(){
 
 unsigned int RAWResource::GetHeight(){
     return height;
-}
-
-unsigned int RAWResource::GetDepth(){
-    return depth;
 }
 
 ColorFormat RAWResource::GetColorFormat() {
