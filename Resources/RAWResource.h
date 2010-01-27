@@ -32,11 +32,7 @@ using namespace std;
  */
 class RAWResource : public ITextureResource {
 private:
-    bool loaded;
     string filename;
-    unsigned char* data;
-    int id;
-    unsigned int width, height;
 
 public:
 
@@ -53,25 +49,14 @@ public:
         ar & filename;
     }
 
-    RAWResource() : loaded(false),data(NULL) {
-        width = height = id = 0;
-    };
+    RAWResource() : ITextureResource() {}
 
-    RAWResource(string file, int width, int height, int depth);
+    RAWResource(string file, int width, int height, int channels);
     ~RAWResource();
 
     // resource methods
     void Load();
-    void Unload();
-
-    // texture resource methods
-	int GetID();
-	void SetID(int id);   
-    unsigned int GetWidth();
-	unsigned int GetHeight();
-    ColorFormat GetColorFormat();
-	unsigned char* GetData();
-
+    //    void Unload();
 };
 
 } //NS Resources
