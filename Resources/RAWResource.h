@@ -56,7 +56,6 @@ public:
 
     // resource methods
     void Load();
-    //    void Unload();
 };
 
 } //NS Resources
