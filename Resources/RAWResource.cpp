@@ -18,7 +18,7 @@ namespace Resources {
 using OpenEngine::Utils::Convert;
 
 RAWResource::RAWResource(string filename, int width, int height, int channels)
-    : ITextureResource(), filename(filename){
+    : Texture2D<unsigned char>(), filename(filename){
     this->width = width;
     this->height = height;
     this->channels = channels;
@@ -50,11 +50,12 @@ void RAWResource::Load() {
     //@todo: check that the file size equals w*h*d
 
     long size = this->width * this->height * this->channels;;
-    this->data = new unsigned char[size];
+    unsigned char* data = new unsigned char[size];
     
-    file->read((char*)this->data, sizeof(unsigned char)*size); 
+    file->read((char*)data, sizeof(unsigned char)*size); 
     if (file->fail()) {
-        delete [] this->data;
+        delete [] data;
+        delete [] (unsigned char*) data;
         this->data = NULL;
         file->close();
         delete file;
@@ -64,8 +65,10 @@ void RAWResource::Load() {
     delete file;
 
     // no image data 
-    if (this->data == NULL)
+    if (data == NULL)
     	throw ResourceException("Unsupported data in file: " + filename);
+
+    this->data = data;
 }
 
 } //NS Resources

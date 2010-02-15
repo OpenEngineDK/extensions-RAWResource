@@ -10,7 +10,7 @@
 #ifndef _RAW_RESOURCE_H_
 #define _RAW_RESOURCE_H_
 
-#include <Resources/ITextureResource.h>
+#include <Resources/Texture2D.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -30,7 +30,7 @@ using namespace std;
  *
  * @class RAWResource RAWResource.h Resources/RAWResource.h
  */
-class RAWResource : public ITextureResource {
+class RAWResource : public Texture2D<unsigned char> {
 private:
     string filename;
 
@@ -45,11 +45,11 @@ public:
     //    friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive& ar, const unsigned int version) {
-        ar & boost::serialization::base_object<ITextureResource>(*this);
+        ar & boost::serialization::base_object<Texture2D<unsigned char> >(*this);
         ar & filename;
     }
 
-    RAWResource() : ITextureResource() {}
+    RAWResource() : Texture2D<unsigned char>() {}
 
     RAWResource(string file, int width, int height, int channels);
     ~RAWResource();
