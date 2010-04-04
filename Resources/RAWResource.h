@@ -15,10 +15,6 @@
 #include <iostream>
 #include <fstream>
 
-#include <boost/serialization/base_object.hpp>
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/split_member.hpp>
-#include <boost/serialization/extended_type_info.hpp>
 #include <Logging/Logger.h>
 
 namespace OpenEngine {
@@ -43,13 +39,6 @@ public:
      * @param file tga file to load.
      */
 
-    //    friend class boost::serialization::access;
-    template<class Archive>
-    void serialize(Archive& ar, const unsigned int version) {
-        ar & boost::serialization::base_object<Texture2D<unsigned char> >(*this);
-        ar & filename;
-    }
-
     RAWResource() : Texture2D<unsigned char>() {}
 
     RAWResource(string file, int width, int height, int channels);
@@ -61,7 +50,5 @@ public:
 
 } //NS Resources
 } //NS OpenEngine
-
-BOOST_CLASS_EXPORT(OpenEngine::Resources::RAWResource)
 
 #endif // _RAW_RESOURCE_H_
