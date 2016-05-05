@@ -1,3 +1,3 @@
 # source
-darcs /extensions/RAWResource    http://openengine.dk/code/extensions/RAWResource
-darcs-dev /extensions/RAWResource    fh.daimi.au.dk:/users/cgd/code/extensions/RAWResource
+git /extensions/RAWResource    https://github.com/OpenEngineDK/extensions-RAWResource.git
+git-dev /extensions/RAWResource    git@github.com:OpenEngineDK/extensions-RAWResource.git
